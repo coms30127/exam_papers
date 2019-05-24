@@ -175,7 +175,7 @@ Show using the Taylor expansion that this is accurate to $O(\delta t^3)$. [8 mar
 
 \begin{enumerate}
 
-\item Let each synapse's weight $w_i$ be plastic, and change according to a Hebbian rule: $w(t+1) = w(t) + \frac{1}{8} x_i y$ where $t$ indexes time. Is this plasticity rule stable or unstable? Explain your answer. [3 marks]
+\item Let each synapse's weight $w_i$ be plastic, and change according to a Hebbian rule: $w(t+1) = w(t) + \frac{1}{8} x_i y$ where $x_i$ is the $i$th presynaptic neuron's firing rate, $y= \sum_i w_i x_i$ is the postsynaptic neuron's firing rate, and $t$ indexes time. Is this plasticity rule stable or unstable? Explain your answer. [3 marks]
 
  
 
@@ -203,13 +203,14 @@ Show using the Taylor expansion that this is accurate to $O(\delta t^3)$. [8 mar
 
 \item Unstable. $\Delta w$ is always $\geq 0$, so the weights grow without bound. The rule encourages positive feedback since increasing $w$ will increase $y$, which further increases $w$. [3 marks, one mark for correctly stating `unstable', two more mark for a correct justification.]
 
-\item $w_{1new} = \frac{3}{4}$ and $w_{2new} = \frac{5}{4}$ [4 marks, two marks for each correct answer].
+\item In this case $y(t)= (1/2 \times 1)+(1/2 \times 3)=2$.
+$w_{1new} = \frac{3}{4}$ and $w_{2new} = \frac{5}{4}$ [4 marks, two marks for each correct answer].
 
-\item Subtractive scaling gives $w_{1new} = \frac{1}{4}$ and $w_{2new} = \frac{3}{4}$, divisive scaling gives $w_{1new} = \frac{3}{8}$ and $w_{2new} = \frac{5}{8}$. Subtractive normalisation results in the bigger difference between the weights (1/2 vs 1/4). [5 marks, 2 marks for each pair of correct weight values, and one further mark for a correct statement that subtractive normalisation gives a greater difference. If the student carried forward a mistake from the previous question, do not penalise them.]
+\item From the answer to the previous part, we have $w_1 + w_2 = 3/4 + 5/4 = 2$. To do subtractive scaling we need to subtract a total of 1 away, which when split equally between the two synapses becomes 1/2 each. So subtractive scaling gives $w_{1new} =  \frac{3}{4} - \frac{1}{2} = \frac{1}{4}$ and $w_{2new} = \frac{5}{4} - \frac{1}{2} = \frac{3}{4}$. To do divisive scaling we need to divide both weights by 2. So divisive scaling gives $w_{1new} = \frac{1}{2} \times \frac{3}{4} = \frac{3}{8}$ and $w_{2new} = \frac{1}{2} \times \frac{5}{4} =\frac{5}{8}$. Subtractive normalisation results in the bigger difference between the weights (1/2 vs 1/4). [5 marks, 2 marks for each pair of correct weight values, and one further mark for a correct statement that subtractive normalisation gives a greater difference. If the student carried forward a mistake from the previous question, do not penalise them.]
 
-\item Steady-state $\theta_\infty = y^2$. [3 marks for correct answer.]
+\item To find the steady-state threshold we set, $\frac{d\theta}{dt}=0$, then rearrange for $\theta$, giving $\theta_\infty = y^2$. [3 marks for correct answer.]
 
-\item $w_{1 \infty} = (1-5w_{2 \infty})/3$. [5 marks for correct answer.]
+\item To find the steady-state weights we set $\frac{dw_i}{dt}=0$, and insert the steady-state value for $\theta$ from the previous answer. We then get $0 = x_iy(1-y)$. For this to hold either $y$ or $1-y$ has to equal zero, we choose the latter which implies $y=1$. Now we have $1=3w_1+5w_2$. Rearranging gives $w_{1 \infty} = (1-5w_{2 \infty})/3$. [5 marks for correct answer.]
 
 \end{enumerate}
 
